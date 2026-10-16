@@ -1,0 +1,14 @@
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\bin\Debug\Lab 3-BT.exe.config
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\bin\Debug\Lab 3-BT.exe
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\bin\Debug\Lab 3-BT.pdb
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\obj\Debug\Lab 3-BT.csproj.AssemblyReference.cache
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\obj\Debug\Lab_3_BT.Form1.resources
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\obj\Debug\Lab_3_BT.Properties.Resources.resources
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\obj\Debug\Lab 3-BT.csproj.GenerateResource.cache
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\obj\Debug\Lab 3-BT.csproj.CoreCompileInputs.cache
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\obj\Debug\Lab 3-BT.exe
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\obj\Debug\Lab 3-BT.pdb
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\bin\Debug\students.txt
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\bin\Debug\System.Private.DataContractSerialization.dll
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\bin\Debug\System.Reflection.TypeExtensions.dll
+E:\Save file OOP + PTUD Desktop\Lab 2\Chu de 3 - Phan Khanh Sinh\Lab 3-BT\obj\Debug\Lab 3-BT.csproj.Up2Date
