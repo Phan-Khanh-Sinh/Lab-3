@@ -45,9 +45,25 @@ namespace Lab_3_BT
         public bool Them(SinhVien sv, out string error)
         {
             error = string.Empty;
+
+            // 1. Kiểm tra trùng MSSV
             if (DanhSach.Any(s => s.MSSV == sv.MSSV))
             {
-                error = $"Mã số sinh viên {sv.MSSV} đã tồn tại!";
+                error = $"Mã số sinh viên '{sv.MSSV}' đã tồn tại!";
+                return false;
+            }
+
+            // 2. Kiểm tra trùng Số CMND
+            if (DanhSach.Any(s => s.SoCMND == sv.SoCMND))
+            {
+                error = $"Số CMND '{sv.SoCMND}' đã tồn tại trên hệ thống!";
+                return false;
+            }
+
+            // 3. Kiểm tra trùng Số điện thoại
+            if (DanhSach.Any(s => s.SoDT == sv.SoDT))
+            {
+                error = $"Số điện thoại '{sv.SoDT}' đã được sử dụng bởi sinh viên khác!";
                 return false;
             }
 
@@ -64,6 +80,20 @@ namespace Lab_3_BT
             if (index == -1)
             {
                 error = "Không tìm thấy sinh viên có MSSV này để cập nhật!";
+                return false;
+            }
+
+            // Kiểm tra xem CMND mới có bị trùng với người khác (khác MSSV) không
+            if (DanhSach.Any(s => s.MSSV != sv.MSSV && s.SoCMND == sv.SoCMND))
+            {
+                error = $"Số CMND '{sv.SoCMND}' đã bị trùng với một sinh viên khác!";
+                return false;
+            }
+
+            // Kiểm tra xem Số ĐT mới có bị trùng với người khác (khác MSSV) không
+            if (DanhSach.Any(s => s.MSSV != sv.MSSV && s.SoDT == sv.SoDT))
+            {
+                error = $"Số điện thoại '{sv.SoDT}' đã bị trùng với một sinh viên khác!";
                 return false;
             }
 
