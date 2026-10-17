@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,28 +11,34 @@ namespace Lab_3_BT
     public class QLSinhVien
     {
         public List<SinhVien> DanhSach { get; set; }
-        private string _currentFilePath;
+        public string CurrentFilePath { get; set; } // Lưu vết đường dẫn file đang dùng
 
-        public QLSinhVien(string filePath = "students.txt")
+        // Đường dẫn mặc định trỏ thẳng vào bin\Debug\students.txt
+        public QLSinhVien(string filePath = null)
         {
-            _currentFilePath = filePath;
-            LoadFromFile(filePath);
+            if (string.IsNullOrEmpty(filePath))
+            {
+                CurrentFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "students.txt");
+            }
+            else
+            {
+                CurrentFilePath = filePath;
+            }
+            LoadFromFile(CurrentFilePath);
         }
-
-        // Tải danh sách từ bất kỳ định dạng nào (.txt, .xml, .json, .csv)
         public void LoadFromFile(string filePath)
         {
-            _currentFilePath = filePath;
-            var storage = StorageFactory.GetStorage(filePath);
-            DanhSach = storage.DocFile(filePath);
+            CurrentFilePath = Path.GetFullPath(filePath);
+            var storage = StorageFactory.GetStorage(CurrentFilePath);
+            DanhSach = storage.DocFile(CurrentFilePath);
         }
 
-        // Lưu danh sách theo định dạng file hiện tại hoặc file chỉ định
         public void SaveToFile(string filePath = null)
         {
-            string path = filePath ?? _currentFilePath;
-            var storage = StorageFactory.GetStorage(path);
-            storage.GhiFile(path, DanhSach);
+            string path = filePath ?? CurrentFilePath;
+            CurrentFilePath = Path.GetFullPath(path);
+            var storage = StorageFactory.GetStorage(CurrentFilePath);
+            storage.GhiFile(CurrentFilePath, DanhSach);
         }
 
         // a. Thêm sinh viên (Kiểm tra trùng MSSV)

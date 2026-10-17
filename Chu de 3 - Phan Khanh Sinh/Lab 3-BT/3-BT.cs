@@ -61,6 +61,9 @@ namespace Lab_3_BT
                 }
             };
 
+            contextMenuListView.Items.Clear();
+            // 1. Menu Xóa sinh viên đã chọn
+            var menuXoaSV = new ToolStripMenuItem("Xóa sinh viên đã chọn");
             menuXoaSV.Click += (s, ev) =>
             {
                 var dsXoa = lvDSSV.CheckedItems.Cast<ListViewItem>().Select(item => item.SubItems[0].Text).ToList();
@@ -75,10 +78,62 @@ namespace Lab_3_BT
                     qlsv.XoaNhieu(dsXoa);
                     HienThiLenListView(qlsv.DanhSach);
                     ResetForm();
+                    MessageBox.Show("Đã xóa và tự động cập nhật lại file!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            };
+
+            // 2. Menu: Mở file đã có
+            var menuMoFile = new ToolStripMenuItem("Mở danh sách từ file đã có (TXT, XML, JSON, CSV)...");
+            menuMoFile.Click += (s, ev) =>
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    ofd.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory; // Mở thẳng vào bin\Debug
+                    ofd.Filter = "Tất cả file hỗ trợ (*.txt;*.xml;*.json;*.csv)|*.txt;*.xml;*.json;*.csv|Text File (*.txt)|*.txt|XML File (*.xml)|*.xml|JSON File (*.json)|*.json|CSV File (*.csv)|*.csv";
+                    ofd.RestoreDirectory = true;
+
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        qlsv.LoadFromFile(ofd.FileName);
+                        HienThiLenListView(qlsv.DanhSach);
+                        MessageBox.Show($"Đã nạp thành công {qlsv.DanhSach.Count} sinh viên từ file:\n{ofd.FileName}", "Mở file thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            };
+
+            // 3. Menu: Lưu trực tiếp vào file đã có hiện tại
+            var menuLuuHienTai = new ToolStripMenuItem("Lưu trực tiếp vào file hiện tại");
+            menuLuuHienTai.Click += (s, ev) =>
+            {
+                qlsv.SaveToFile(); // Ghi đè thẳng vào CurrentFilePath
+                MessageBox.Show($"Đã lưu thành công {qlsv.DanhSach.Count} sinh viên vào file:\n{qlsv.CurrentFilePath}", "Lưu file thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            };
+
+            // 4. Menu: Lưu thành file mới (Save As)
+            var menuLuuMoi = new ToolStripMenuItem("Lưu thành file khác (Save As)...");
+            menuLuuMoi.Click += (s, ev) =>
+            {
+                using (SaveFileDialog sfd = new SaveFileDialog())
+                {
+                    sfd.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                    sfd.Filter = "Text File (*.txt)|*.txt|XML File (*.xml)|*.xml|JSON File (*.json)|*.json|CSV File (*.csv)|*.csv";
+                    sfd.RestoreDirectory = true;
+
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        qlsv.SaveToFile(sfd.FileName);
+                        MessageBox.Show($"Đã lưu danh sách ra file mới:\n{sfd.FileName}", "Lưu file thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             };
 
             HienThiLenListView(qlsv.DanhSach);
+            contextMenuListView.Items.Add(menuXoaSV);
+            contextMenuListView.Items.Add(new ToolStripSeparator());
+            contextMenuListView.Items.Add(menuMoFile);
+            contextMenuListView.Items.Add(menuLuuHienTai);
+            contextMenuListView.Items.Add(menuLuuMoi);
+            lvDSSV.ContextMenuStrip = contextMenuListView;
         }
 
         private void HienThiLenListView(List<SinhVien> list)
