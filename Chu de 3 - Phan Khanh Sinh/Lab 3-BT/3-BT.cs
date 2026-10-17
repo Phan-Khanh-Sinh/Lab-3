@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -238,6 +239,18 @@ namespace Lab_3_BT
                 bool daDangKy = sv.MonHocDangKy != null && sv.MonHocDangKy.Contains(tenMon);
                 clbMonHoc.SetItemChecked(i, daDangKy);
             }
+            string duongDanAnh = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{sv.MSSV}.jpg");
+            if (!File.Exists(duongDanAnh))
+                duongDanAnh = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{sv.MSSV}.png");
+
+            if (File.Exists(duongDanAnh))
+            {
+                pbHinh.ImageLocation = duongDanAnh;
+            }
+            else
+            {
+                pbHinh.Image = null; // Nếu chưa có ảnh thì để trống
+            }
         }
 
         private string ShowInputBox(string prompt, string title)
@@ -431,6 +444,8 @@ namespace Lab_3_BT
             radNam.Checked = true;
             for (int i = 0; i < clbMonHoc.Items.Count; i++)
                 clbMonHoc.SetItemChecked(i, false);
+            pbHinh.Image = null;
+            pbHinh.ImageLocation = null;
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -443,6 +458,22 @@ namespace Lab_3_BT
 
             // 3. Thông báo nhẹ
             MessageBox.Show("Đã khôi phục toàn bộ danh sách sinh viên!", "Làm mới thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void btnThemHinh_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Title = "Chọn ảnh chân dung sinh viên";
+                ofd.Filter = "File hình ảnh (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp";
+                ofd.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                ofd.RestoreDirectory = true;
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    pbHinh.ImageLocation = ofd.FileName; // Nạp ảnh trực tiếp
+                    pbHinh.Tag = ofd.FileName;           // Lưu đường dẫn ảnh tạm thời
+                }
+            }
         }
     }
 }

@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnThemHinh = new System.Windows.Forms.Button();
+            this.pbHinh = new System.Windows.Forms.PictureBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.radNu = new System.Windows.Forms.RadioButton();
             this.radNam = new System.Windows.Forms.RadioButton();
@@ -63,12 +66,12 @@
             this.lvDSSV = new System.Windows.Forms.ListView();
             this.contextMenuListView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuXoaSV = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHinh)).BeginInit();
             this.contextMenuMonHoc.SuspendLayout();
             this.grbDSSV.SuspendLayout();
             this.contextMenuListView.SuspendLayout();
@@ -94,6 +97,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnThemHinh);
+            this.groupBox1.Controls.Add(this.pbHinh);
             this.groupBox1.Controls.Add(this.btnRefresh);
             this.groupBox1.Controls.Add(this.dtpNgaySinh);
             this.groupBox1.Controls.Add(this.radNu);
@@ -126,6 +131,37 @@
             this.groupBox1.Size = new System.Drawing.Size(1019, 581);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // btnThemHinh
+            // 
+            this.btnThemHinh.Location = new System.Drawing.Point(796, 274);
+            this.btnThemHinh.Name = "btnThemHinh";
+            this.btnThemHinh.Size = new System.Drawing.Size(175, 32);
+            this.btnThemHinh.TabIndex = 26;
+            this.btnThemHinh.Text = "Chọn hình ảnh...";
+            this.btnThemHinh.UseVisualStyleBackColor = true;
+            this.btnThemHinh.Click += new System.EventHandler(this.btnThemHinh_Click);
+            // 
+            // pbHinh
+            // 
+            this.pbHinh.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pbHinh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbHinh.Location = new System.Drawing.Point(796, 44);
+            this.pbHinh.Name = "pbHinh";
+            this.pbHinh.Size = new System.Drawing.Size(175, 215);
+            this.pbHinh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbHinh.TabIndex = 25;
+            this.pbHinh.TabStop = false;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(224, 510);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(124, 48);
+            this.btnRefresh.TabIndex = 10;
+            this.btnRefresh.Text = "Làm mới";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // dtpNgaySinh
             // 
@@ -164,7 +200,7 @@
             this.cmbLop.FormattingEnabled = true;
             this.cmbLop.Location = new System.Drawing.Point(596, 167);
             this.cmbLop.Name = "cmbLop";
-            this.cmbLop.Size = new System.Drawing.Size(251, 33);
+            this.cmbLop.Size = new System.Drawing.Size(161, 33);
             this.cmbLop.TabIndex = 3;
             // 
             // btnThoat
@@ -215,7 +251,7 @@
             // 
             this.txbTen.Location = new System.Drawing.Point(596, 111);
             this.txbTen.Name = "txbTen";
-            this.txbTen.Size = new System.Drawing.Size(251, 30);
+            this.txbTen.Size = new System.Drawing.Size(161, 30);
             this.txbTen.TabIndex = 1;
             // 
             // txbHo
@@ -229,7 +265,7 @@
             // 
             this.txbDiaChi.Location = new System.Drawing.Point(224, 276);
             this.txbDiaChi.Name = "txbDiaChi";
-            this.txbDiaChi.Size = new System.Drawing.Size(623, 30);
+            this.txbDiaChi.Size = new System.Drawing.Size(533, 30);
             this.txbDiaChi.TabIndex = 1;
             // 
             // lblGioiTinh
@@ -353,7 +389,7 @@
             this.mtxbSDT.Location = new System.Drawing.Point(596, 222);
             this.mtxbSDT.Mask = "0000.000.000";
             this.mtxbSDT.Name = "mtxbSDT";
-            this.mtxbSDT.Size = new System.Drawing.Size(251, 30);
+            this.mtxbSDT.Size = new System.Drawing.Size(161, 30);
             this.mtxbSDT.TabIndex = 8;
             // 
             // clbMonHoc
@@ -371,7 +407,7 @@
             "Phương pháp NCKH",
             "Lập trình trên thiết bị di động",
             "An toàn và bảo mật hệ thống"});
-            this.clbMonHoc.Location = new System.Drawing.Point(224, 334);
+            this.clbMonHoc.Location = new System.Drawing.Point(224, 350);
             this.clbMonHoc.MultiColumn = true;
             this.clbMonHoc.Name = "clbMonHoc";
             this.clbMonHoc.Size = new System.Drawing.Size(747, 154);
@@ -438,16 +474,6 @@
             this.menuXoaSV.Size = new System.Drawing.Size(300, 24);
             this.menuXoaSV.Text = "Xóa sinh viên đã chọn (Checkbox)";
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(224, 510);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(124, 48);
-            this.btnRefresh.TabIndex = 10;
-            this.btnRefresh.Text = "Làm mới";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -463,6 +489,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHinh)).EndInit();
             this.contextMenuMonHoc.ResumeLayout(false);
             this.grbDSSV.ResumeLayout(false);
             this.contextMenuListView.ResumeLayout(false);
@@ -509,6 +536,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuListView;
         private System.Windows.Forms.ToolStripMenuItem menuXoaSV;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnThemHinh;
+        private System.Windows.Forms.PictureBox pbHinh;
     }
 }
 
