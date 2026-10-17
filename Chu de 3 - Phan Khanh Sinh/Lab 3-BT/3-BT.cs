@@ -377,5 +377,17 @@ namespace Lab_3_BT
             for (int i = 0; i < clbMonHoc.Items.Count; i++)
                 clbMonHoc.SetItemChecked(i, false);
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            // 1. Nạp lại TOÀN BỘ danh sách sinh viên gốc ban đầu lên ListView
+            HienThiLenListView(qlsv.DanhSach);
+
+            // 2. Xóa trắng các ô nhập liệu phía trên về mặc định
+            ResetForm();
+
+            // 3. Thông báo nhẹ
+            MessageBox.Show("Đã khôi phục toàn bộ danh sách sinh viên!", "Làm mới thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

@@ -63,6 +63,7 @@
             this.lvDSSV = new System.Windows.Forms.ListView();
             this.contextMenuListView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuXoaSV = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -93,6 +94,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnRefresh);
             this.groupBox1.Controls.Add(this.dtpNgaySinh);
             this.groupBox1.Controls.Add(this.radNu);
             this.groupBox1.Controls.Add(this.radNam);
@@ -168,7 +170,7 @@
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(799, 510);
+            this.btnThoat.Location = new System.Drawing.Point(846, 510);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(125, 48);
             this.btnThoat.TabIndex = 2;
@@ -179,7 +181,7 @@
             // btnCapNhat
             // 
             this.btnCapNhat.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCapNhat.Location = new System.Drawing.Point(648, 510);
+            this.btnCapNhat.Location = new System.Drawing.Point(699, 510);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(125, 48);
             this.btnCapNhat.TabIndex = 2;
@@ -190,7 +192,7 @@
             // btnThemMoi
             // 
             this.btnThemMoi.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemMoi.Location = new System.Drawing.Point(494, 510);
+            this.btnThemMoi.Location = new System.Drawing.Point(545, 510);
             this.btnThemMoi.Name = "btnThemMoi";
             this.btnThemMoi.Size = new System.Drawing.Size(125, 48);
             this.btnThemMoi.TabIndex = 2;
@@ -201,7 +203,7 @@
             // btnTim
             // 
             this.btnTim.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTim.Location = new System.Drawing.Point(341, 510);
+            this.btnTim.Location = new System.Drawing.Point(381, 510);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(125, 48);
             this.btnTim.TabIndex = 2;
@@ -436,6 +438,16 @@
             this.menuXoaSV.Size = new System.Drawing.Size(300, 24);
             this.menuXoaSV.Text = "Xóa sinh viên đã chọn (Checkbox)";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(224, 510);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(124, 48);
+            this.btnRefresh.TabIndex = 10;
+            this.btnRefresh.Text = "Làm mới";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -496,6 +508,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuXoaMon;
         private System.Windows.Forms.ContextMenuStrip contextMenuListView;
         private System.Windows.Forms.ToolStripMenuItem menuXoaSV;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
 
